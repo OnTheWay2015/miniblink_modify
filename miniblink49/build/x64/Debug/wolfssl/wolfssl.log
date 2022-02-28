@@ -1,0 +1,98 @@
+﻿d:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8004: Intermediate 目录未以斜杠结尾。  此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。
+d:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(453,5): warning MSB8004: Output 目录未以斜杠结尾。  此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。
+cl : 命令行 warning D9025: 正在重写“/sdl”(用“/GS-”)
+  crl.c
+D:\git_work\miniblink49\third_party\wolfssl\src\crl.c(29,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  internal.c
+D:\git_work\miniblink49\third_party\wolfssl\src\internal.c(28,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  keys.c
+D:\git_work\miniblink49\third_party\wolfssl\src\keys.c(29,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  ocsp.c
+D:\git_work\miniblink49\third_party\wolfssl\src\ocsp.c(29,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  ssl.c
+D:\git_work\miniblink49\third_party\wolfssl\src\ssl.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  tls.c
+D:\git_work\miniblink49\third_party\wolfssl\src\tls.c(28,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  tls13.c
+D:\git_work\miniblink49\third_party\wolfssl\src\tls13.c(79,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  wolfio.c
+D:\git_work\miniblink49\third_party\wolfssl\src\wolfio.c(28,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  aes.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\aes.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  arc4.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\arc4.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  asn.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\asn.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  blake2b.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\blake2b.c(40,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  camellia.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\camellia.c(60,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  chacha.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\chacha.c(33,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  chacha20_poly1305.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\chacha20_poly1305.c(28,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  coding.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\coding.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  des3.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\des3.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  dh.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\dh.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  dsa.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\dsa.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  ecc.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\ecc.c(29,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  正在生成代码...
+  正在编译...
+  error.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\error.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  hash.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\hash.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  hc128.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\hc128.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  hmac.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\hmac.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  integer.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\integer.c(35,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  logging.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\logging.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  md4.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\md4.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  md5.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\md5.c(28,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  memory.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\memory.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  pkcs12.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\pkcs12.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  pkcs7.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\pkcs7.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  poly1305.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\poly1305.c(31,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  pwdbased.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\pwdbased.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  rabbit.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\rabbit.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  random.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\random.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  ripemd.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\ripemd.c(28,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  rsa.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\rsa.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  sha.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\sha.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  sha256.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\sha256.c(29,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  sha512.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\sha512.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  正在生成代码...
+  正在编译...
+  signature.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\signature.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  wc_encrypt.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\wc_encrypt.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  wc_port.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\wc_port.c(27,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  wolfevent.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\wolfevent.c(26,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  wolfmath.c
+D:\git_work\miniblink49\third_party\wolfssl\wolfcrypt\src\wolfmath.c(30,10): fatal error C1083: 无法打开包括文件: “wolfssl/wolfcrypt/settings.h”: No such file or directory
+  正在生成代码...

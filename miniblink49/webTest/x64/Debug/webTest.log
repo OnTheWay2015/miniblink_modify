@@ -1,0 +1,21 @@
+﻿  app.cpp
+D:\git_work\miniblink49\webTest\app.cpp(160,22): warning C4566: 由通用字符名称“\u8FD9”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,22): warning C4566: 由通用字符名称“\u662F”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,22): warning C4566: 由通用字符名称“\u4E2A”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,22): warning C4566: 由通用字符名称“\u9875”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,22): warning C4566: 由通用字符名称“\u9762”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,110): warning C4566: 由通用字符名称“\u8FD9”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,110): warning C4566: 由通用字符名称“\u662F”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,110): warning C4566: 由通用字符名称“\u4E2A”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,110): warning C4566: 由通用字符名称“\u9875”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,110): warning C4566: 由通用字符名称“\u9762”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,190): error C2664: “void (wkeNetJob,void *,int)”: 无法将参数 2 从“const char [66]”转换为“void *”
+D:\git_work\miniblink49\webTest\app.cpp(160,22): message : 转换丢失限定符
+D:\git_work\miniblink49\webTest\app.cpp(171,32): error C2440: “初始化”: 无法从“const wchar_t [5]”转换为“wchar_t *”
+D:\git_work\miniblink49\webTest\app.cpp(171,15): message : 从字符串文本转换将丢失 const 限定符(请参阅 /Zc:strictStrings)
+D:\git_work\miniblink49\webTest\app.cpp(172,31): error C2440: “初始化”: 无法从“const wchar_t [7]”转换为“wchar_t *”
+D:\git_work\miniblink49\webTest\app.cpp(172,16): message : 从字符串文本转换将丢失 const 限定符(请参阅 /Zc:strictStrings)
+  path.cpp
+D:\git_work\miniblink49\webTest\path.cpp(10,44): warning C4267: “参数”: 从“size_t”转换到“DWORD”，可能丢失数据
+D:\git_work\miniblink49\webTest\path.cpp(36,58): warning C4267: “参数”: 从“size_t”转换到“DWORD”，可能丢失数据
+  正在生成代码...

@@ -1,0 +1,7 @@
+﻿  app.cpp
+D:\git_work\miniblink49\webTest\app.cpp(160,20): warning C4566: 由通用字符名称“\u8FD9”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,20): warning C4566: 由通用字符名称“\u662F”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,20): warning C4566: 由通用字符名称“\u4E2A”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,20): warning C4566: 由通用字符名称“\u9875”表示的字符不能在当前代码页(1252)中表示出来
+D:\git_work\miniblink49\webTest\app.cpp(160,20): warning C4566: 由通用字符名称“\u9762”表示的字符不能在当前代码页(1252)中表示出来
+  webTest.vcxproj -> D:\git_work\miniblink49\build\..\out\Debug\webTest.exe
