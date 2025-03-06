@@ -18,9 +18,6 @@
 
 #include "wkeWebView.h"
 
-
-Application* g_app = NULL;
-
 BOOL FixupHtmlFileUrl(LPCWSTR pathOption, LPWSTR urlBuffer, size_t bufferSize)
 {
     WCHAR htmlPath[MAX_PATH + 1] = { 0 };
@@ -251,15 +248,10 @@ void testCalljs(wkeWebView webWindow)
 jsValue JS_CALL jsCallback(jsExecState es)
 {
 	jsValue jv = jsEmptyObject(es);
-	jsValue jOv1 = jsString(es,"c++ set name");
+	jsValue jOv1 = jsInt(12);
 	jsValue jOv2 = jsInt(2);
 	jsSet(es, jv, "name", jOv1);
 	jsSet(es, jv, "age", jOv2);
-
-
-    const wchar_t* cookie = wkeGetCookieW(g_app->window);
-    MessageBoxW(NULL, cookie, L"Cookie", MB_OK | MB_ICONINFORMATION);
-
 	return jv;
 }
 /*
@@ -326,10 +318,10 @@ BOOL CreateWebWindow(Application* app)
 
 //typedef jsValue(JS_CALL* jsNativeFunction) (jsExecState es);
     
-   jsBindFunction( 
-       "test_nativefunc", //注册js可调用的方法 test_nativefunc
-       &jsCallback,//jsNativeFunction 回调
-       1/*JS 调用时的参数个数  */);
+   // jsBindFunction( 
+   //     "test_nativefunc", //注册js可调用的方法 test_nativefunc
+   //     &jsCallback,//jsNativeFunction 回调
+   //     1/*JS 调用时的参数个数  */);
 
     //testCalljs(app->window); //到加载好之后再调用
 
@@ -379,8 +371,6 @@ void RunMessageLoop(Application* app)
 
 void RunApplication(Application* app)
 {
-    g_app = app;
-
     memset(app, 0, sizeof(Application));
 
     if (!ProcessOptions(app))

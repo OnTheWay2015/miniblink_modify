@@ -3,6 +3,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerWorkingDirectory>$(SolutionDir)..\out\$(Configuration)\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>-x https://127.0.0.1:8085/single</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-x https://www.baidu.com</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>
