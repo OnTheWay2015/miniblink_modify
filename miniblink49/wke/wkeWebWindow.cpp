@@ -171,7 +171,7 @@ void CWebWindow::_destroyWindow()
     m_state = kWkeWebWindowDestroing;
 
     ::KillTimer(m_hWnd, (UINT_PTR)this);
-    ::DestroyWindow(m_hWnd); // ��������뵽������
+    ::DestroyWindow(m_hWnd); // 这里会重入到本函数
 }
 
 void CWebWindow::_initCallbacks()
@@ -244,11 +244,15 @@ LRESULT CWebWindow::_windowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM l
         if (WS_EX_LAYERED != (WS_EX_LAYERED & GetWindowLong(hwnd, GWL_EXSTYLE))) {
             wkeRepaintIfNeeded(this);
 
-            PAINTSTRUCT ps = { 0 };
+            PAINTSTRUCT ps = { 0 };// 指向PAINTSTRUCT结构的指针，用于接收绘制信息
+            //BeginPaint 为 Windows API中的一个函数，用于为指定窗口进行绘图工作的准备。该函数通过填充一个PAINTSTRUCT结构来获取与绘图有关的信息。
             HDC hdc = ::BeginPaint(hwnd, &ps);
 
             RECT rcClip = ps.rcPaint;
 
+
+            //函数用于获取窗口客户区的大小和位置信息,即窗口中除标题栏和菜单栏之外的部分。
+            //客户区坐标是相对于窗口客户区的左上角而言的，左上角坐标为(0,0)
             RECT rcClient;
             ::GetClientRect(hwnd, &rcClient);
 
@@ -263,8 +267,25 @@ LRESULT CWebWindow::_windowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM l
             int width = rcInvalid.right - rcInvalid.left;
             int height = rcInvalid.bottom - rcInvalid.top;
 
-            if (0 != width && 0 != height)
+            if (0 != width && 0 != height) {
+                //?BitBlt 用于在设备上下文（通常是一个窗口或位图）之间复制像素数据
                 ::BitBlt(hdc, destX, destY, width, height, wkeGetViewDC(this), srcX, srcY, SRCCOPY);
+                /*
+                    BOOL BitBlt(
+    HDC hdcDest,  // 目标设备上下文的句柄
+    int nXDest,    // 目标矩形区域的左上角X轴坐标
+    int nYDest,    // 目标矩形区域的左上角Y轴坐标
+    int nWidth,    // 在目标设备中绘制位图的宽度
+    int nHeight,   // 在目标设备中绘制位图的高度
+    HDC hdcSrc,    // 源设备上下文的句柄
+    int nXSrc,     // 源矩形区域的左上角X轴坐标
+    int nYSrc,     // 源矩形区域的左上角Y轴坐标
+    DWORD dwRop    // 光栅操作代码
+);
+
+                */
+
+            }
 
             ::EndPaint(hwnd, &ps);
         }
@@ -560,7 +581,7 @@ LRESULT CWebWindow::_windowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM l
         ::ImmReleaseContext(hwnd, hIMC);
     }
         return 0;
-    case WM_GETDLGCODE: // ʹ��MB�ؼ���Ϊ�Ի����Ӵ���ʱ�ɽ��յ�������Ϣ
+    case WM_GETDLGCODE: // 使得MB控件作为对话框子窗口时可接收到键盘消息
         return DLGC_WANTARROWS | DLGC_WANTALLKEYS | DLGC_WANTCHARS;
     }
 

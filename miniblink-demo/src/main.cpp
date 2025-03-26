@@ -362,7 +362,16 @@ bool createWebWindow(Application* app)
     wkeOnLoadUrlEnd(app->window, onLoadUrlEnd, app);
     wkeSetDebugConfig(app->window, "decodeUrlRequest", nullptr);
 
-    wkeJsBindFunction("eMsg", &onMsg, nullptr, 5);
+/*
+debugString：可以选的值有：
+    "showDevTools"：开启开发者工具，此时param要填写开发者工具的资源路径，如file:///c:/miniblink-release/front_end/inspector.html
+    注意param此时必须是utf8编码
+    文件在源码位置: D:\git_work\miniblink_modify\miniblink49\third_party\WebKit\Source\devtools\front_end
+*/
+    //wkeSetDebugConfig(app->window, "showDevTools", "file:///D:/git_work/miniblink_modify/miniblink49/out/Debug/front_end/inspector.html");
+    wkeSetDebugConfig(app->window, "showDevTools", "file:///D:/git_work/miniblink_modify/miniblink49/third_party/WebKit/Source/devtools/front_end/inspector.html");
+
+    wkeJsBindFunction("eMsg", &onMsg, nullptr, 5);// 绑定 js 调用 c 方法
     wkeJsBindFunction("eShellExec", &onShellExec, nullptr, 3);
     wkeMoveToCenter(app->window);
     wkeLoadURLW(app->window, app->url.c_str());
@@ -390,7 +399,9 @@ void quitApplication(Application* app)
 void runApp(Application* app)
 {
     memset(app, 0, sizeof(Application));
-    app->url = L"http://hook.test/resources/view/index.html"; // 演示使用hook的方式加载资源
+    //app->url = L"http://hook.test/resources/view/index.html"; // 演示使用hook的方式加载资源
+    //app->url = L"https://www.baidu.com";
+    app->url = L"http://127.0.0.1";
 
     if (!createWebWindow(app)) {
         PostQuitMessage(0);

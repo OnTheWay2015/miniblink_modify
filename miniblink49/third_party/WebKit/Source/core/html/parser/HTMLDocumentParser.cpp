@@ -345,6 +345,8 @@ bool HTMLDocumentParser::canTakeNextToken()
     return true;
 }
 
+
+// 线程方法 from  BackgroundHTMLParser::sendTokensToMainThread()
 void HTMLDocumentParser::didReceiveParsedChunkFromBackgroundParser(PassOwnPtr<ParsedChunk> chunk)
 {
     TRACE_EVENT0("blink", "HTMLDocumentParser::didReceiveParsedChunkFromBackgroundParser");

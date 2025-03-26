@@ -18,6 +18,8 @@
 #endif
 #endif
 
+#include <stdint.h>
+
 #if defined(macintosh)
 #include "config-mac.h"
 #elif defined(_WIN32_WCE)

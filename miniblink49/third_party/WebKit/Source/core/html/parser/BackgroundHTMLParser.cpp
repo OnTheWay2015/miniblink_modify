@@ -221,6 +221,8 @@ void BackgroundHTMLParser::pumpTokenizer()
         return;
 
     while (true) {
+        
+        //先解析出 m_token.m_type / HTMLToken::Type  在后面 生成 CompactHTMLToken 实例时使用
         m_sourceTracker.start(m_input.current(), m_tokenizer.get(), *m_token);
         if (!m_tokenizer->nextToken(m_input.current(), *m_token)) {
             // We've reached the end of our current input.
@@ -236,7 +238,8 @@ void BackgroundHTMLParser::pumpTokenizer()
                 xssInfo->m_textPosition = position;
                 m_pendingXSSInfos.append(xssInfo.release());
             }
-
+            
+            //按 m_token 的类型,从 http_body 数据里生成 CompactHTMLToken
             CompactHTMLToken token(m_token.get(), TextPosition(m_input.current().currentLine(), m_input.current().currentColumn()));
 
             m_preloadScanner->scan(token, m_input.current(), m_pendingPreloads);
