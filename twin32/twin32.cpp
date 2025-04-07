@@ -165,6 +165,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     //}
 
     {
+/*
+wke 开头的方法在 WKE_FOR_EACH_DEFINE_FUNCTION 里声明
+*/
+
         wkeTest();
         pWebView = wkeCreateWebWindow(
             WKE_WINDOW_TYPE_CONTROL,//窗口嵌到父级
@@ -180,11 +184,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         wkeShowWindow(pWebView, true);
 		//m_web = wkeCreateWebWindow(, hWnd, rtClient.left, rtClient.top, rtClient.right - rtClient.left, rtClient.bottom - rtClient.top);
 
-		wkeSetDebugConfig(pWebView, "showDevTools", "file:///D:/git_work/miniblink_modify/miniblink49/third_party/WebKit/Source/devtools/front_end/inspector.html");
+		//打开调试工具
+		//wkeSetDebugConfig(pWebView, "showDevTools", "file:///D:/git_work/miniblink_modify/miniblink49/third_party/WebKit/Source/devtools/front_end/inspector.html");
 
 
 #ifdef UNICODE
-        ::wkeLoadURLW(pWebView, L"http://127.0.0.1");
+		auto url = L"http://127.0.0.1";
+		//auto url = L"http://hook.test/resources/view/index.html";
+        ::wkeLoadURLW(pWebView, url);
 		//wkeLoadFile(pWebView, "ski/index.html");
 #else
         ::wkeLoadURL(m_pWebView, lpUrl);

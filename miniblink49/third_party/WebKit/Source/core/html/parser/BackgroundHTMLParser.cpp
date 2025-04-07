@@ -222,7 +222,7 @@ void BackgroundHTMLParser::pumpTokenizer()
 
     while (true) {
         
-        //先解析出 m_token.m_type / HTMLToken::Type  在后面 生成 CompactHTMLToken 实例时使用
+        //先解析出 m_token.m_type, m_range / HTMLToken::Type  在后面 生成 CompactHTMLToken 实例时使用
         m_sourceTracker.start(m_input.current(), m_tokenizer.get(), *m_token);
         if (!m_tokenizer->nextToken(m_input.current(), *m_token)) {
             // We've reached the end of our current input.

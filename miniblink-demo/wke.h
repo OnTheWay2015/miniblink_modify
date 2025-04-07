@@ -1043,7 +1043,7 @@ public:
     ITERATOR3(void, wkeNodeOnCreateProcess, wkeWebView webWindow, wkeNodeOnCreateProcessCallback callback, void* param, "") \
     \
     ITERATOR5(void, wkeAddNpapiPlugin, wkeWebView webView, const char* mime, void* initializeFunc, void* getEntryPointsFunc, void* shutdownFunc, "") \
-    ITERATOR1(wkeWebView, wkeGetWebviewByNData, void* ndata, "") \
+    ITERATOR1(wkeWebView, wkeGetWebViewByNData, void* ndata, "") \
     \
     ITERATOR5(bool, wkeRegisterEmbedderCustomElement, wkeWebView webView, wkeWebFrameHandle frameId, const char* name, void* options, void* outResult, "") \
     \
