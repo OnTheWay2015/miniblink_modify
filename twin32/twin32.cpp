@@ -141,6 +141,72 @@ void wkeTest()
 	//wkeFinalize();
 }
  wkeWebView pWebView = nullptr;
+
+ jsValue JS_CALL jsStartWork(jsExecState es)
+ {
+	 jsValue jsRet2 = wkeRunJS(pWebView, "CPlusPlusCallJS()"); //调用前面加载js的方法 CPlusPlusCallJS
+
+	 jsValue jv = jsEmptyObject(es);
+ 
+	 return jv;
+ }
+
+
+ //通过 jsBindFunction 把 jsCallback 注册为 js 可调用的全局方法 test_nativefunc
+ jsValue JS_CALL jsCallback(jsExecState es)
+ {
+	 //jsValue obj = jsObject(es);
+	 jsValue jv = jsEmptyObject(es);
+	 jsValue jOv1 = jsInt(12);
+	 jsValue jOv2 = jsInt(2);
+	 jsSet(es, jv, "name", jOv1);
+	 jsSet(es, jv, "age", jOv2);
+	 return jv;
+ }
+ 
+
+ // 回调：文档加载成功
+ void handleDocumentReady(wkeWebView webWindow, void* param)
+ {
+
+
+	 jsBindFunction(
+		 "startWork", //注册js方法 startWork
+		 &jsStartWork,// 注入 js 加载成功回调
+		 1/*JS 调用时的参数个数  */);
+
+
+
+	jsBindFunction( 
+	    "test_nativefunc", //注册js可调用的方法 test_nativefunc
+	    &jsCallback,//jsNativeFunction 回调
+	    1/*JS 调用时的参数个数  */);
+
+	 //wkeShowWindow(webWindow, true);
+
+	 //webWindow->MainFrame()->ToWebLocalFrame();
+	 
+	 //jsValue jsRet1 = wkeRunJS(webWindow, "document.documentElement.outerHTML(); "); //
+
+	 char* ss = "alert('test  ');\
+				var script = document.createElement('script');\
+				script.text = \"alert('test JS'); function CPlusPlusCallJS() {alert('ttt.js CPlusPlusCallJS() act'); 	test_nativefunc({\\\"age\\\":1,level:11}); } \"; \
+				document.body.appendChild(script);";
+	 char* s = "alert('test  ');\
+				var script = document.createElement('script');\
+				script.src = \"file:///D:/tools/nginx-1.28.0/html/ttt.js\"; \
+				script.onload=function() {alert('JS loadeddddd');  startWork(); }; \
+				document.body.appendChild(script);";
+	 //char* s0 = "alert('test  '); var script = document.createElement('script'); script.text = \"alert('test JS');\"; document.body.appendChild(script); ";
+
+	 
+	 jsValue jsRet = wkeRunJS(webWindow, s); //注入执行js 加载
+	 //jsValue jsRet1 = wkeRunJS(webWindow, "alert('test JS_01'); "); //注入执行
+
+	 //jsValue jsRet2 = wkeRunJS(webWindow, "CPlusPlusCallJS()"); //调用前面加载js的方法 CPlusPlusCallJS
+ }
+
+
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	hInst = hInstance; // 将实例句柄存储在全局变量中
@@ -185,11 +251,12 @@ wke 开头的方法在 WKE_FOR_EACH_DEFINE_FUNCTION 里声明
 		//m_web = wkeCreateWebWindow(, hWnd, rtClient.left, rtClient.top, rtClient.right - rtClient.left, rtClient.bottom - rtClient.top);
 
 		//打开调试工具
-		//wkeSetDebugConfig(pWebView, "showDevTools", "file:///D:/git_work/miniblink_modify/miniblink49/third_party/WebKit/Source/devtools/front_end/inspector.html");
+		wkeSetDebugConfig(pWebView, "showDevTools", "file:///D:/git_work/miniblink_modify/miniblink49/third_party/WebKit/Source/devtools/front_end/inspector.html");
+		wkeOnDocumentReady(pWebView, handleDocumentReady, nullptr);
 
 
 #ifdef UNICODE
-		auto url = L"http://127.0.0.1";
+		auto url = L"http://127.0.0.1/html/test.html";
 		//auto url = L"http://hook.test/resources/view/index.html";
         ::wkeLoadURLW(pWebView, url);
 		//wkeLoadFile(pWebView, "ski/index.html");
