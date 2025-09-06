@@ -180,7 +180,7 @@ static v8::Local<v8::Value> getV8Value(jsValue v, v8::Local<v8::Context> context
     return out;
 }
 
-static __int64 s_handleCount = 0;
+static __int64 s_handleCount = 0;  //v8 在 wkejsbind模块的数据索引, 不把v8的数据结构暴露在外,通过索引操作. 解耦v8
 
 static jsValue createJsValueByLocalValue2(
     v8::Isolate* isolate, 

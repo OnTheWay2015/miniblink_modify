@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "resource.h"
 #include "wke.h"
-
+ 
 #include <shlwapi.h>//PathRemoveFileSpec,PathFileExists
 #pragma comment(lib, "shlwapi.lib")
 
@@ -144,14 +144,40 @@ void wkeTest()
 
  jsValue JS_CALL jsStartWork(jsExecState es)
  {
-	 jsValue jsRet2 = wkeRunJS(pWebView, "CPlusPlusCallJS()"); //调用前面加载js的方法 CPlusPlusCallJS
+	 jsValue jsRet1 = wkeRunJS(pWebView, " alert('jsStartWork() act') ");
+	 jsValue jsRet2 = wkeRunJS(pWebView, "CPlusPlusCallJS()"); //调用前面在页面加载js的方法 CPlusPlusCallJS
 
 	 jsValue jv = jsEmptyObject(es);
  
 	 return jv;
  }
 
+ 
 
+jsValue JS_CALL jsNativeNotify(jsExecState es)
+ {
+ 	jsValue jv = jsArg(es,0);
+	jsType tp = jsTypeOf(jv);
+ 	jsValue vv = jsGet(es, jv, "name");
+	auto name = jsToString(es,vv);
+
+	 return jv;
+ }
+
+
+ 
+
+//jsGetWebView 
+//jsArg(jsExecState es, int argIdx)
+//jsType WKE_CALL_TYPE jsTypeOf(jsValue v)
+//  jsGetKeys(jsExecState es, jsValue object)
+// jsSet(jsExecState es, jsValue object, const char* prop, jsValue value)
+// jsGet(jsExecState es, jsValue object, const char* prop)
+//  jsEmptyArray(jsExecState es)  / jsEmptyObject(jsExecState es)
+//jsIsArray(jsValue v)
+//jsGetLength(jsExecState es, jsValue object)
+//jsGetAt(jsExecState es, jsValue object, int index)
+//jsSetAt(jsExecState es, jsValue object, int index, jsValue value)
  //通过 jsBindFunction 把 jsCallback 注册为 js 可调用的全局方法 test_nativefunc
  jsValue JS_CALL jsCallback(jsExecState es)
  {
@@ -170,17 +196,8 @@ void wkeTest()
  {
 
 
-	 jsBindFunction(
-		 "startWork", //注册js方法 startWork
-		 &jsStartWork,// 注入 js 加载成功回调
-		 1/*JS 调用时的参数个数  */);
+	 //jsValue jsRet2 = wkeRunJS(pWebView, "CPlusPlusCallJS()"); //调用前面加载js的方法 CPlusPlusCallJS
 
-
-
-	jsBindFunction( 
-	    "test_nativefunc", //注册js可调用的方法 test_nativefunc
-	    &jsCallback,//jsNativeFunction 回调
-	    1/*JS 调用时的参数个数  */);
 
 	 //wkeShowWindow(webWindow, true);
 
@@ -188,14 +205,14 @@ void wkeTest()
 	 
 	 //jsValue jsRet1 = wkeRunJS(webWindow, "document.documentElement.outerHTML(); "); //
 
-	 char* ss = "alert('test  ');\
-				var script = document.createElement('script');\
-				script.text = \"alert('test JS'); function CPlusPlusCallJS() {alert('ttt.js CPlusPlusCallJS() act'); 	test_nativefunc({\\\"age\\\":1,level:11}); } \"; \
-				document.body.appendChild(script);";
-	 char* s = "alert('test  ');\
+	//char* ss = "alert('test  ');\
+	//			var script = document.createElement('script');\
+	//			script.text = \"alert('test JS'); function CPlusPlusCallJS() {alert('ttt.js CPlusPlusCallJS() act'); 	test_nativefunc({\\\"age\\\":1,level:11}); } \"; \
+	//			document.body.appendChild(script);";
+	 char* s = "alert('try  document.body.appendChild(script)  ttt.js ');\
 				var script = document.createElement('script');\
 				script.src = \"file:///D:/tools/nginx-1.28.0/html/ttt.js\"; \
-				script.onload=function() {alert('JS loadeddddd');  startWork(); }; \
+				script.onload=function() {alert('ttt.js loaded');  startWork({}); }; \
 				document.body.appendChild(script);";
 	 //char* s0 = "alert('test  '); var script = document.createElement('script'); script.text = \"alert('test JS');\"; document.body.appendChild(script); ";
 
@@ -205,6 +222,19 @@ void wkeTest()
 
 	 //jsValue jsRet2 = wkeRunJS(webWindow, "CPlusPlusCallJS()"); //调用前面加载js的方法 CPlusPlusCallJS
  }
+ //ttt.js 
+ /* 
+alert('ttt.js file loaded');
+
+function CPlusPlusCallJS() {
+   
+	alert("CPlusPlusCallJS() act ");
+	
+	NativeNotify({});
+}
+ 
+ */
+
 
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
@@ -246,6 +276,25 @@ wke 开头的方法在 WKE_FOR_EACH_DEFINE_FUNCTION 里声明
         );
         //获取hwnd
         //m_wkeHwnd = wkeGetHostHWND(pWebView);
+
+
+
+		jsBindFunction(
+			"test_nativefunc", //注册js可调用的方法 test_nativefunc
+			&jsCallback,//jsNativeFunction 回调
+			1/*JS 调用时的参数个数  */);
+
+
+		jsBindFunction(
+			"startWork", //注册js方法 startWork
+			&jsStartWork,// 注入 js 加载成功回调
+			1/*JS 调用时的参数个数  */);
+
+
+		jsBindFunction(
+			"NativeNotify", //注册js可调用的方法 on_js_notify
+			&jsNativeNotify,//jsNativeFunction 回调
+			1/*JS 调用时的参数个数  */);
 
         wkeShowWindow(pWebView, true);
 		//m_web = wkeCreateWebWindow(, hWnd, rtClient.left, rtClient.top, rtClient.right - rtClient.left, rtClient.bottom - rtClient.top);
